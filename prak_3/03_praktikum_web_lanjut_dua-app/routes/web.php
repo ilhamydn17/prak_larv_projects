@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,31 +28,26 @@ Route::get('/', function () {
     return view('home-2');
 });
 
-Route::prefix('product')->group(function () {
-    Route::get('/', function () {
-        return view('product');
+Route::get('/test', function () {
+    return view('testing', [
+        'datas' => Category::all(),
+    ]);
+});
+
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+
+    Route::get('/education', function (Category $slug) {
+        return view('products', [
+            'product' => $slug,
+        ]);
     });
 
-    Route::get('/marbel-edu', function () {
-        return view('product', [
-            'info' => 'Product : marbel edu',
-        ]);
-    });
-    Route::get('/marbel-friends', function () {
-        return view('product', [
-            'info' => 'Product : marbel friends',
-        ]);
-    });
-    Route::get('/riri', function () {
-        return view('product', [
-            'info' => 'Product : Riri',
-        ]);
-    });
-    Route::get('/kolak', function () {
-        return view('product', [
-            'info' => 'Product : kolak',
-        ]);
-    });
+    Route::get('/friends', [ProductController::class, 'getBy']);
+
+    Route::get('/stories', [ProductController::class, 'getBy']);
+
+    Route::get('/song', [ProductController::class, 'getBy']);
 });
 
 Route::prefix('program')->group(function () {
