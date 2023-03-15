@@ -11,7 +11,7 @@
                 {{-- <img src="https://source.unsplash.com/200x100?kids" class="card-img-top" alt="..."> --}}
                 <h5 class="card-title mt-1"> {{ $data->name}}  </h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="/products/{{ $data->slug}}" class="btn btn-primary btn-sm">get more</a>
+                <a href="/products/{{ $data->name }}/{{ $data->slug}}" class="btn btn-primary btn-sm">get more</a>
             </div>
          </div>
         @endforeach

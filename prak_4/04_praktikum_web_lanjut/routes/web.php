@@ -1,10 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Models\News;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,42 +36,45 @@ Route::get('/', function () {
     return view('home-2');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
-
 Route::prefix('products')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
 
-    Route::get('/education/{slugCategory}', [
+    Route::get('/Marbel Education/{slugCategory}', [
         ProductController::class,
         'getBy',
     ]);
 
-    Route::get('/friends/{slugCategory}', [ProductController::class, 'getBy']);
+    Route::get('/Marbel And Friends/{slugCategory}', [
+        ProductController::class,
+        'getBy',
+    ]);
 
-    Route::get('/stories/{slugCategory}', [ProductController::class, 'getBy']);
+    Route::get('/Riri Story/{slugCategory}', [
+        ProductController::class,
+        'getBy',
+    ]);
 
-    Route::get('/song/{slugCategory}', [ProductController::class, 'getBy']);
+    Route::get('/Kolak Song/{slugCategory}', [
+        ProductController::class,
+        'getBy',
+    ]);
 });
 
 Route::prefix('program')->group(function () {
-    Route::get('/', function () {
-        return view('program');
-    });
+    Route::get('/', [ProgramController::class, 'index']);
 
-    Route::get('/karir', function () {
-        return view('program', [
-            'info' => 'Program karir',
+    Route::get('/program-karir', function () {
+        return view('single-program', [
+            'info' => 'Program Karir',
         ]);
     });
-    Route::get('/magang', function () {
-        return view('program', [
+    Route::get('/program-magang', function () {
+        return view('single-program', [
             'info' => 'Program magang',
         ]);
     });
-    Route::get('/kunjungan-industri', function () {
-        return view('program', [
+    Route::get('/program-kunjungan-industri', function () {
+        return view('single-program', [
             'info' => 'Program Kunjungan industri',
         ]);
     });
@@ -74,34 +82,42 @@ Route::prefix('program')->group(function () {
 
 Route::prefix('news')->group(function () {
     Route::get('/', function () {
-        return view('news');
+        return view('news', [
+            'news' => News::all(),
+        ]);
     });
 
     Route::get('/{id}', function ($id) {
-        return view('news', [
-            'idNews' => $id,
+        return view('news-single', [
+            'id' => $id,
+            'news' => News::find($id),
         ]);
     });
 });
 
+// Route::get('/news/{id}', function ($id) {});
+
 Route::get('/about-us', function () {
-    return view('about-us', []);
+    return view('about-us', [
+        'info' => 'About Us',
+    ]);
 });
 
-Route::get('/contact-us', function () {
-    return view('contact-us');
-});
+Route::resource('contact-us', ContactController::class);
 
 // testing praktikum 2
-Route::get('/test2', function () {
-    return view('home-2');
-});
+// Route::get('/test2', function () {
+//     return view('home-2');
+// });
 
-Route::get('products/{slug}', [ProductController::class, 'getBy']);
+// Route::get('products/{slug}', [ProductController::class, 'getBy']);
 
-Route::resource('kategori', CategoryController::class);
-// Route::resource('produk', ProductController::class);
+// Route::resource('kategori', CategoryController::class);
+// // Route::resource('produk', ProductController::class);
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [
+//     App\Http\Controllers\HomeController::class,
+//     'index',
+// ])->name('home');

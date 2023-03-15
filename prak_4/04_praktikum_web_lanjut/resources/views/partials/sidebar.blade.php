@@ -20,7 +20,7 @@
 <hr class="sidebar-divider my-0">
 
 <li class="nav-item active">
-    <a class="nav-link" href="/products/">
+    <a class="nav-link" href="/products">
         <i class="fas fa-fw fa-solid fa-gamepad"></i>
         <span>Products</span>
     </a>
@@ -31,7 +31,7 @@
 
  <!-- Nav Item - Dashboard -->
  <li class="nav-item active">
-     <a class="nav-link" href="index.html">
+     <a class="nav-link" href="/program">
         <i class="fa-solid fa-briefcase"></i>
          <span>Program</span></a>
  </li>
@@ -40,7 +40,7 @@
 
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="/news">
         <i class="fa-solid fa-newspaper"></i>
         <span>News</span></a>
     </li>
@@ -49,7 +49,7 @@
 
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="/about-us">
         <i class="fa-solid fa-user"></i>
         <span>About us</span></a>
     </li>
@@ -58,7 +58,7 @@
 
    <!-- Nav Item - Dashboard -->
    <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="/contact-us">
         <i class="fa-solid fa-address-book"></i>
         <span>Contact Us</span></a>
     </li>
