@@ -11,7 +11,7 @@ class StoreMahasiswaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreMahasiswaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nim' => 'required',
+            'nama' => 'required',
+            'kelas_id' => 'required',
+            'jurusan' => 'required',
+            'no_handphone' => 'required',
         ];
     }
 }

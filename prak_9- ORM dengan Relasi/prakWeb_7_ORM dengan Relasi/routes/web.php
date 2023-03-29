@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
+use App\Models\Mahasiswa;
+use App\Models\MataKuliah;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,14 @@ use App\Http\Controllers\MahasiswaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/test', function () {
+    $mhs = Mahasiswa::with('matakuliah')->get();
+    return view('test',['mhs' => $mhs]);
+});
+
+Route::get('/test2', function () {
+    return view('mahasiswas.detail_matkul');
 });
 
 Route::resource('mahasiswa', MahasiswaController::class);
+Route::get('mahasiswa/{nim}/khs',[MahasiswaController::class,'showMatkul'])->name('mahasiswa.nilai');

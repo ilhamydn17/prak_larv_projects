@@ -10,21 +10,18 @@ class Mahasiswa extends Model
     use HasFactory;
 
     protected $table = 'mahasiswa';
-    protected $primaryKey = 'nim';
-    protected $fillable = [
-        'nim',
-        'nama',
-        'kelas',
-        'jurusan',
-        'email',
-        'tanggal_lahir',
-        'no_handphone',
-    ];
+    protected $guarded = 'id';
 
     public $timestamps = false;
 
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+
+    public function matakuliah()
+    {
+        // define the relationship
+        return $this->belongsToMany(MataKuliah::class,'mahasiswa_matakuliah','mahasiswa_id','mata_kuliah_id')->withPivot('nilai');
     }
 }

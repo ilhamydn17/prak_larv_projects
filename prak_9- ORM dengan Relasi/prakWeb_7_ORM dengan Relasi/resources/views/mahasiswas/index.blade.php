@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="row">
-
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mt-2">
                 <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
@@ -29,13 +28,13 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-        <table class="table table-bordered table-xl">
+        <table class="table table-bordered">
             <tr>
                 <th>Nim</th>
                 <th>Nama</th>
                 <th>Kelas</th>
                 <th>Jurusan</th>
-                <th>No. HP</th>
+                {{-- <th>No. HP</th> --}}
                 <th width="280px">Action</th>
             </tr>
             @foreach ($mahasiswas as $mahasiswa)
@@ -45,7 +44,7 @@
                     <td>{{ $mahasiswa->nama }}</td>
                     <td>{{ $mahasiswa->kelas->nama_kelas }}</td>
                     <td>{{ $mahasiswa->jurusan }}</td>
-                    <td>{{ $mahasiswa->no_handphone }}</td>
+                    {{-- <td>{{ $mahasiswa->no_handphone }}</td> --}}
                     <td>
                         <form action="{{ route('mahasiswa.destroy', $mahasiswa->nim) }}" method="POST">
                             <a class="btn btn-info" href="{{ route('mahasiswa.show', $mahasiswa->nim) }}">Show</a>
@@ -53,7 +52,9 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
+                            <a href="{{ route('mahasiswa.nilai',$mahasiswa->nim) }}" class="btn btn-warning">Nilai</a>
                         </form>
+
                     </td>
                 </tr>
             @endforeach
