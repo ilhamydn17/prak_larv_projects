@@ -35,7 +35,7 @@
                 <th>Kelas</th>
                 <th>Jurusan</th>
                 {{-- <th>No. HP</th> --}}
-                <th width="280px">Action</th>
+                <th>Action</th>
             </tr>
             @foreach ($mahasiswas as $mahasiswa)
                 <tr>
@@ -46,13 +46,13 @@
                     <td>{{ $mahasiswa->jurusan }}</td>
                     {{-- <td>{{ $mahasiswa->no_handphone }}</td> --}}
                     <td>
-                        <form action="{{ route('mahasiswa.destroy', $mahasiswa->nim) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('mahasiswa.show', $mahasiswa->nim) }}">Show</a>
-                            <a class="btn btn-primary" href="{{ route('mahasiswa.edit', $mahasiswa->nim) }}">Edit</a>
+                        <form action="{{ route('mahasiswa.destroy', $mahasiswa->nim) }}" method="POST" class="d-flex p-1">
+                            <a class="btn btn-info col-3 mr-1" href="{{ route('mahasiswa.show', $mahasiswa->nim) }}">Show</a>
+                            <a class="btn btn-primary col-3 mr-1" href="{{ route('mahasiswa.edit', $mahasiswa->nim) }}">Edit</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                            <a href="{{ route('mahasiswa.nilai',$mahasiswa->nim) }}" class="btn btn-warning">Nilai</a>
+                            <button type="submit" class="btn btn-danger col-3 mr-1">Delete</button>
+                            <a href="{{ route('mahasiswa.nilai',$mahasiswa->nim) }}" class="btn btn-warning col-3 mr-1">Nilai</a>
                         </form>
 
                     </td>

@@ -51,7 +51,6 @@ class MahasiswaController extends Controller
     public function store(StoreMahasiswaRequest $request)
     {
         Mahasiswa::create($request->validated());
-
         // jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()
             ->route('mahasiswa.index')
