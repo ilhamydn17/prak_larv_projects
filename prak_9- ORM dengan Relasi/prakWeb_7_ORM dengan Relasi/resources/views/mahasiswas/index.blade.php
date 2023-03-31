@@ -41,7 +41,6 @@
                 <th>Jurusan</th>
                 {{-- <th>No. HP</th> --}}
                 <th>Action</th>
-                <th>Action</th>
             </tr>
             @foreach ($mahasiswas as $mahasiswa)
                 <tr>
