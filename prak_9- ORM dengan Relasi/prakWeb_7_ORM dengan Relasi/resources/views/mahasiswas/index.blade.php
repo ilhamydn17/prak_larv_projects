@@ -56,8 +56,8 @@
                             <a class="btn btn-primary col-3 mr-1" href="{{ route('mahasiswa.edit', $mahasiswa->nim) }}">Edit</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                            <a href="{{ route('mahasiswa.nilai',$mahasiswa->nim) }}" class="btn btn-warning">Nilai</a>
+                            <button type="submit" class="btn btn-danger col-3 mr-1">Delete</button>
+                            <a href="{{ route('mahasiswa.nilai',$mahasiswa->nim) }}" class="btn btn-warning col-3 mr-1">Nilai</a>
                         </form>
                     </td>
                 </tr>
