@@ -59,7 +59,7 @@ class MahasiswaController extends Controller
 
         // jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()
-            ->route('mahasiswa.index')
+            ->view('mahasiswas.index')
             ->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 

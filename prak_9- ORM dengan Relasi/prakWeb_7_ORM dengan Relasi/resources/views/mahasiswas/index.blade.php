@@ -3,7 +3,7 @@
 @section('content')
 @if ($mahasiswas[0] == null)
 <div class="alert alert-danger mt-3">
-    Gaada bestiee
+    <p>Maaf, data mahasiswa tidak ditemukan</p>
 </div>
 @endif
     <div class="row">
@@ -55,7 +55,7 @@
                             <a class="btn btn-info col-3 mr-1" href="{{ route('mahasiswa.show', $mahasiswa->nim) }}">Show</a>
                             <a class="btn btn-primary col-3 mr-1" href="{{ route('mahasiswa.edit', $mahasiswa->nim) }}">Edit</a>
                             @csrf
-                            @method('DELETE'
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger col-3 mr-1">Delete</button>
                             <a href="{{ route('mahasiswa.nilai',$mahasiswa->nim) }}" class="btn btn-warning col-3 mr-1">Nilai</a>
                         </form>
