@@ -3,8 +3,7 @@
 @section('title', 'Crete Article')
 
 @section('content')
-    <form action="{{ route('article.index') }}" method="post" enctype="multipart/formdata">
-
+    <form action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Title: </label>

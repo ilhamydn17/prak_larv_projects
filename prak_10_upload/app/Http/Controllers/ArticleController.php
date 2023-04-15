@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewArticleRequest;
+use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +16,6 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-
         return view('article.index', compact('articles'));
     }
 
@@ -30,19 +31,14 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(NewArticleRequest $request)
     {
         $image_name = "";
-        //create new article
         if($request->file('image')){
-            $image_name = $request->file('image')->store('images', 'public');
+            $image_name = $request->file('image')->store('public');
         }
 
-        Article::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'featured_image' => $image_name,
-        ]);
+        Article::create($request->validated() + ['featured_image' => $image_name]);
 
         return redirect()->route('article.index');
     }
@@ -60,33 +56,28 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id )
     {
         //create edit page
-        $article = Article::find(1);
-        return view('article.edit', ['article' => $article]);
+        $article = Article::find($id);
+        return view('article.edit',compact('article'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $id)
+    public function update(UpdateArticleRequest $request, $id)
     {
-        //create logic for update article
-        $article = Article::find($id);
-        $article->title = $request->title;
-        $article->content = $request->content;
-
-        if($article->featured_image && file_exists(storage_path('app/public/' . $article->featured_image))){
-            Storage::delete('public/' . $article->featured_image);
+        // default image name
+        $image_name = Article::find($id)->featured_image;
+        // if new image is uploaded
+        if($request->file('new_image')){
+            $image_name = $request->file('new_image')->store('public');
         }
+        //create logic for update article
+       Article::find($id)->update($request->validated() + ['featured_image' => $image_name]);
 
-        $image_name = $request->file('image')->store('images', 'public');
-        $article->featured_image = $image_name;
-
-        $article->save();
-
-        return "article berhasil diupdate";
+        return redirect()->route('article.index');
     }
 
     /**

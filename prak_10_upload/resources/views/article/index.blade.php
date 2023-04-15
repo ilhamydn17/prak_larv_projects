@@ -16,10 +16,12 @@
             </div>
         </div>
         <div class="row">
+
+            {{-- @dd($articles); --}}
             @foreach ($articles as $article)
                 <div class="col-md-3 my-2 ms-1">
                     <div class="card" style="width: 16rem;">
-                        {{-- <img src="..." class="card-img-top" alt="..."> --}}
+                        <img src="{{ Storage::url($article->featured_image) }}" class="card-img-top" alt="..." width="80px">
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text">{{ $article->content }}</p>
