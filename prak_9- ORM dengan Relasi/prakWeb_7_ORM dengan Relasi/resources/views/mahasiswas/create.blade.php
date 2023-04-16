@@ -21,7 +21,8 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm">
+
+                    <form method="post" action="{{ route('mahasiswa.store') }}">
                         @csrf
                         <div class="form-group">
                             <label for="Nim">Nim</label>

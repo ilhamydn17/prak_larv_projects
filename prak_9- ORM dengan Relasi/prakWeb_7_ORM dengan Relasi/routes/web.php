@@ -25,6 +25,8 @@ Route::get('/test2', function () {
     return view('mahasiswas.detail_matkul');
 });
 
+
 Route::resource('mahasiswa', MahasiswaController::class);
+Route::post('/mahasiswa', 'MahasiswaController@store')->name('mahasiswa.store');
 Route::get('mahasiswa/{nim}/khs',[MahasiswaController::class,'showMatkul'])->name('mahasiswa.nilai');
 Route::post('/mahasiswa', [MahasiswaController::class, 'search'])->name('mahasiswa.search');

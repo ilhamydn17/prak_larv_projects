@@ -33,7 +33,7 @@ class MahasiswaController extends Controller
 
         //mengembalikan ke view home/index, dengan mengirimkan data2 mahasiswa
         return view('mahasiswas.index', compact('mahasiswas'));
-        with('i', (request()->input('page', 1) - 1) * 5);
+        // with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
      * Show the form for creating a new resource.
@@ -122,5 +122,9 @@ class MahasiswaController extends Controller
         return redirect()
             ->route('mahasiswa.index')
             ->with('success', 'Data mahasiswa berhasil dihapus');
+    }
+
+    public function test(){
+
     }
 }

@@ -47,7 +47,7 @@ class MahasiswaController extends Controller
     {
         $kelas = Kelas::all();
         //halaman untuk menambahkan data mahasiswa baru
-        return view('mahasiswas.create', ['kelas' => $kelas]);
+        return view('mahasiswas.create', compact('kelas'));
     }
 
     /**
@@ -57,9 +57,7 @@ class MahasiswaController extends Controller
     {
         Mahasiswa::create($request->validated());
         // jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()
-            ->route('mahasiswa.index')
-            ->with('success', 'Mahasiswa Berhasil Ditambahkan');
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**

@@ -18,4 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('mahasiswa', MahasiswaController::class);
+Route::resource('mahasiswa', MahasiswaController::class)->names([
+    'index' => 'mahasiswa.index',
+    'create' => 'mahasiswa.create',
+    'store' => 'mahasiswa.store',
+    'show' => 'mahasiswa.show',
+    'edit' => 'mahasiswa.edit',
+    'update' => 'mahasiswa.update',
+    'destroy' => 'mahasiswa.destroy',
+]);
+
+// Route::name('mahasiswa.test')->get('mahasiswa/test', [MahasiswaController::class, 'test']);

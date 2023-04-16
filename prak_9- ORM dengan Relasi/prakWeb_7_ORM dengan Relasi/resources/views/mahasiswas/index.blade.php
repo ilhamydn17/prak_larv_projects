@@ -1,11 +1,13 @@
 @extends('Layouts.layout')
 
 @section('content')
-@if ($mahasiswas[0] == null)
+{{-- @if()
 <div class="alert alert-danger mt-3">
-    Gaada bestiee
+    Pencarian tidak ditemukan
 </div>
-@endif
+@endif --}}
+
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mt-2">
